@@ -1,10 +1,8 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:java:.
 version: 2.1
 jobs:
   test-java:
     docker:
-      - image: cimg/openjdk:17.0
+      - image: cimg/openjdk:8.0  # Environnement Java 8 ou supérieur
     steps:
       - checkout
       - run:
@@ -15,26 +13,29 @@ jobs:
       - restore_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
       - run:
-          command: mvn verify
+          command: mvn verify  # Exécution des tests unitaires avec Maven
       - store_test_results:
           path: target/surefire-reports
       - save_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
           paths:
             - ~/.m2/repository
+
   deploy:
-    # This is an example deploy job, not actually used by the workflow
     docker:
       - image: cimg/base:stable
     steps:
-      # Replace this with steps to deploy to users
       - run:
           name: deploy
-          command: '#e.g. ./deploy.sh'
+          command: '#e.g. ./deploy.sh'  # Remplacer par les étapes réelles de déploiement
+
 workflows:
   build-and-test:
     jobs:
       - test-java
-    # - deploy:
-    #     requires:
-    #       - test-java
+      - deploy:
+          requires:
+            - test-java
+          filters:
+            branches:
+              only: master  # Branche master uniquement
