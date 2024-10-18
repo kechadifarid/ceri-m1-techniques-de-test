@@ -1,5 +1,8 @@
 # UCE Génie Logiciel Avancé : Techniques de tests
 
+##Nom : ##Kechadi                                                 ##Prenom: ##Farid
+##Groupe : ##G1_ilsen_cla
+
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
