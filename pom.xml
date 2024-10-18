@@ -1,9 +1,8 @@
-<project
-        xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-    http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>fr.univ-avignon.tt</groupId>
     <artifactId>java-project</artifactId>
     <packaging>jar</packaging>
@@ -11,10 +10,29 @@
     <name>java-project</name>
     <url>http://univ-avignon.fr</url>
 
+    <!-- Configuration de la version de Java utilisée par le projet -->
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>  <!-- Version de Java source -->
+        <maven.compiler.target>11</maven.compiler.target>  <!-- Version de Java cible -->
+        <maven.compiler.release>11</maven.compiler.release> <!-- Option recommandée pour spécifier une version unique -->
+    </properties>
+
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
+            <!-- Plugin pour la compilation avec la bonne version de Java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- Plugin de compilation compatible avec Java 11 -->
+                <configuration>
+                    <source>11</source> <!-- Version Java source -->
+                    <target>11</target> <!-- Version Java cible -->
+                </configuration>
+            </plugin>
+
+            <!-- Plugin pour créer un fichier JAR ombré (shade) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -32,15 +50,15 @@
     </build>
 
     <dependencies>
-        <!-- Mockito for mocking objects in tests -->
+        <!-- Mockito pour les tests unitaires -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.4.0</version>
+            <version>5.4.0</version> <!-- Version compatible avec Java 11 -->
             <scope>test</scope>
         </dependency>
 
-        <!-- JUnit 5 (Jupiter) Dependency for unit testing -->
+        <!-- JUnit 5 pour les tests unitaires -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -48,7 +66,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- JUnit 5 Engine for running tests -->
+        <!-- JUnit 5 Engine pour exécuter les tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
