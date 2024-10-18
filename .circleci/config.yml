@@ -1,38 +1,37 @@
 version: 2.1
+
 orbs:
-  codecov: codecov/codecov@4.0.1  # Déclaration de l'orb Codecov
+  codecov: codecov/codecov@4.0.1
 
 jobs:
-  test-java:
+  # Job to build and test the project
+  build-and-test:
     docker:
-      - image: cimg/openjdk:11.0  # Utilisez Java 11
+      - image: cimg/openjdk:21.0
     steps:
-      - checkout  # Étape pour récupérer le code du dépôt
+      - checkout
       - run:
-          name: Calculate cache key
-          command: |-
-            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
-                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
-      - restore_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}  # Restauration du cache
+          name: Build
+          command: mvn -B -DskipTests clean package
       - run:
-          command: mvn verify  # Exécution des tests unitaires avec Maven
-      - store_test_results:
-          path: target/surefire-reports  # Stockage des résultats de test
-      - save_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}  # Sauvegarde du cache
-          paths:
-            - ~/.m2/repository  # Chemin pour sauvegarder le cache
+          name: Test
+          command: mvn test
+      - run:
+          name: Generate Coverage Report
+          command: mvn jacoco:report
+
+  # Job to upload coverage to Codecov
+  upload-codecov:
+    docker:
+      - image: cimg/openjdk:21.0
+    steps:
+      - checkout
+      - run:
+          name: Upload Coverage to Codecov
+          command: bash <(curl -s https://codecov.io/bash) -t your-codecov-token
 
 workflows:
-  build-and-test:
+  upload-to-codecov:
     jobs:
-      - test-java  # Exécution du job de test Java
-      - checkout  # Cette ligne est incorrecte, car `checkout` n'est pas un job défini.
-      - codecov/upload  # Téléversement des rapports de couverture sur Codecov
-      - deploy:
-          requires:
-            - test-java  # Déploiement dépendant du succès de test-java
-          filters:
-            branches:
-              only: master  # Filtre pour exécuter le déploiement uniquement sur la branche master
+      - build-and-test
+      - upload-codecov
