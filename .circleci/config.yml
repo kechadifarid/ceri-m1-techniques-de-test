@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   test-java:
     docker:
-      - image: cimg/openjdk:8.0  # Environnement Java 8 ou supérieur
+      - image: cimg/openjdk:11.0  # Utilisez Java 11 au lieu de Java 8
     steps:
       - checkout
       - run:

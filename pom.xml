@@ -14,7 +14,6 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>  <!-- Version de Java source -->
         <maven.compiler.target>11</maven.compiler.target>  <!-- Version de Java cible -->
-        <maven.compiler.release>11</maven.compiler.release> <!-- Option recommandée pour spécifier une version unique -->
     </properties>
 
     <build>
@@ -25,10 +24,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version> <!-- Plugin de compilation compatible avec Java 11 -->
+                <version>3.8.1</version>
                 <configuration>
-                    <source>11</source> <!-- Version Java source -->
-                    <target>11</target> <!-- Version Java cible -->
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
 
@@ -54,7 +53,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.4.0</version> <!-- Version compatible avec Java 11 -->
+            <version>5.4.0</version>
             <scope>test</scope>
         </dependency>
 

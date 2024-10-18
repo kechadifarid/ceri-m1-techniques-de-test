@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class IPokemonFactoryTest {
-
+//cc
     @Test
     void testCreatePokemon() {
         // Création d'un mock de IPokemonFactory
