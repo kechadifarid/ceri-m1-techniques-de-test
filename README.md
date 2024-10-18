@@ -1,6 +1,7 @@
 # UCE Génie Logiciel Avancé : Techniques de tests
 
-##Nom : ##Kechadi                                                 ##Prenom: ##Farid
+##Nom : ##Kechadi
+##prenom : ##Farid
 ##Groupe : ##G1_ilsen_cla
 
 ## Introduction
