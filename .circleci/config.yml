@@ -22,7 +22,7 @@ jobs:
       - save_cache:
           key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}  # Sauvegarde du cache
           paths:
-            - ~/.m2/repository  # Chemin pour sauvegarder le cache Maven
+            - ~/.m2/repository  # Chemin pour sauvegarder le cache
 
 workflows:
   build-and-test:
