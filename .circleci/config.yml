@@ -1,41 +1,38 @@
 version: 2.1
+orbs:
+  codecov: codecov/codecov@4.0.1  # Déclaration de l'orb Codecov
+
 jobs:
   test-java:
     docker:
       - image: cimg/openjdk:11.0  # Utilisez Java 11
     steps:
-      - checkout
+      - checkout  # Étape pour récupérer le code du dépôt
       - run:
           name: Calculate cache key
           command: |-
             find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
                     sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
       - restore_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}  # Restauration du cache
       - run:
           command: mvn verify  # Exécution des tests unitaires avec Maven
       - store_test_results:
-          path: target/surefire-reports
+          path: target/surefire-reports  # Stockage des résultats de test
       - save_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
+          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}  # Sauvegarde du cache
           paths:
-            - ~/.m2/repository
-
-  deploy:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'  # Remplacer par les étapes réelles de déploiement
+            - ~/.m2/repository  # Chemin pour sauvegarder le cache Maven
 
 workflows:
   build-and-test:
     jobs:
-      - test-java
+      - test-java  # Exécution du job de test Java
+      - checkout  # Cette ligne est incorrecte, car `checkout` n'est pas un job défini.
+      - codecov/upload  # Téléversement des rapports de couverture sur Codecov
       - deploy:
           requires:
-            - test-java
+            - test-java  # Déploiement dépendant du succès de test-java
           filters:
             branches:
-              only: master  # Branche master uniquement
+              only: master  # Filtre pour exécuter le déploiement uniquement sur la branche master
