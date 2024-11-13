@@ -46,13 +46,14 @@ public class PokemonComparatorsTest {
 
         List<Pokemon> pokemons = Arrays.asList(bulbizarre, aquali);
 
-        // Tri avec le comparateur CP
+        // Tri avec le comparateur CP (ordre décroissant)
         pokemons.sort(PokemonComparators.CP);
 
-        // Vérification de l'ordre par CP
-        assertEquals(2729, pokemons.get(0).getCp()); // Aquali a les CP les plus élevés
-        assertEquals(613, pokemons.get(1).getCp()); // Bulbizarre a les CP les plus bas
+        // Vérification de l'ordre par CP (en ordre décroissant)
+        assertEquals(2729, pokemons.get(0).getCp());  // Aquali avec CP le plus élevé
+        assertEquals(613, pokemons.get(1).getCp());   // Bulbizarre avec CP le plus bas
     }
+
 
 
     @Test
