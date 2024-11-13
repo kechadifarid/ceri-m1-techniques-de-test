@@ -9,9 +9,9 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     // Initialisation des données des Pokémon directement dans le code
     static {
-        POKEMON_METADATA_DB.put(1, new PokemonMetadata(1, "Bulbasaur", 126, 126, 90));
-        POKEMON_METADATA_DB.put(2, new PokemonMetadata(2, "Ivysaur", 156, 158, 120));
-        POKEMON_METADATA_DB.put(3, new PokemonMetadata(3, "Venusaur", 198, 200, 160));
+        POKEMON_METADATA_DB.put(1, new PokemonMetadata(0, "Bulbasaur", 126, 126, 90));
+        POKEMON_METADATA_DB.put(2, new PokemonMetadata(1, "Ivysaur", 156, 158, 120));
+        POKEMON_METADATA_DB.put(3, new PokemonMetadata(2, "Venusaur", 198, 200, 160));
         // Ajoutez ici les autres Pokémon nécessaires en suivant le même modèle
     }
 
