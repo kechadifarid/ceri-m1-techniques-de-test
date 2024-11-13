@@ -13,5 +13,6 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 
         // Créer un entraîneur avec le nom, l'équipe et le pokédex
         return new PokemonTrainer(name, team, pokedex);
+
     }
 }
