@@ -9,7 +9,7 @@ import static org.mockito.Mockito.*;
 class IPokemonFactoryTest {
 //cc
     @Test
-    void testCreatePokemon() {
+    void testCreatePokemon() throws PokedexException {
         // Création d'un mock de IPokemonFactory
         IPokemonFactory factory = Mockito.mock(IPokemonFactory.class);
 
