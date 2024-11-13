@@ -50,9 +50,10 @@ public class PokemonComparatorsTest {
         pokemons.sort(PokemonComparators.CP);
 
         // Vérification de l'ordre par CP
-        assertEquals(2729, pokemons.get(0).getCp());
-        assertEquals(613, pokemons.get(1).getCp());
+        assertEquals(2729, pokemons.get(0).getCp()); // Aquali a les CP les plus élevés
+        assertEquals(613, pokemons.get(1).getCp()); // Bulbizarre a les CP les plus bas
     }
+
 
     @Test
     public void testIvComparator() {
