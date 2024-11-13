@@ -15,6 +15,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
         // Ajoutez ici les autres Pokémon nécessaires en suivant le même modèle
     }
 
+
     /**
      * Récupère et retourne les métadonnées du Pokémon identifié par l'index.
      * @param index Index du Pokémon pour récupérer ses métadonnées.
