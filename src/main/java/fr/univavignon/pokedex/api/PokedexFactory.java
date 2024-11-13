@@ -8,7 +8,11 @@ public class PokedexFactory implements IPokedexFactory {
 
     @Override
     public IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
-        // Création d'un objet Pokedex avec les services de métadonnées et de fabrique de Pokémon
+        // Vérification des arguments pour éviter les valeurs nulles
+        if (metadataProvider == null || pokemonFactory == null) {
+            throw new NullPointerException("Les fournisseurs de métadonnées et de fabrication de Pokémon ne peuvent pas être null.");
+        }
         return new Pokedex(metadataProvider, pokemonFactory);
     }
+
 }
