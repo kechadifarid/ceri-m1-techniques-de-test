@@ -1,8 +1,11 @@
 # UCE Génie Logiciel Avancé : Techniques de tests
 
-##Nom : ##Kechadi
-##prenom : ##Farid
-##Groupe : ##G1_ilsen_cla
+## Informations
+- **Nom et prénom** : kechadi farid 
+- **Groupe** : ilsen cla 
+
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/kechadifarid/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/kechadifarid/ceri-m1-techniques-de-test/tree/master)
+[![codecov](https://codecov.io/gh/kechadifarid/ceri-m1-techniques-de-test/graph/badge.svg?token=6IANL9DVY2)](https://codecov.io/gh/kechadifarid/ceri-m1-techniques-de-test)
 
 ## Introduction
 
