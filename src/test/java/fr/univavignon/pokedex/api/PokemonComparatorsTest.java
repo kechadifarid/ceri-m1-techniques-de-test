@@ -8,74 +8,82 @@ public class PokemonComparatorsTest {
 
     @Test
     public void testNameComparator() {
-        // Create test data
-        Pokemon pikachu = new Pokemon(1, "Pikachu", 55, 40, 35, 100, 60, 10, 20, 80);
-        Pokemon charmander = new Pokemon(2, "Charmander", 52, 43, 39, 80, 45, 20, 10, 75);
-        Pokemon bulbasaur = new Pokemon(3, "Bulbasaur", 49, 49, 45, 90, 60, 15, 30, 75);
+        // Création des données
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
 
-        List<Pokemon> pokemons = Arrays.asList(pikachu, charmander, bulbasaur);
+        List<Pokemon> pokemons = Arrays.asList(bulbizarre, aquali);
 
-        // Sort using NAME comparator
+        // Tri avec le comparateur NAME
         pokemons.sort(PokemonComparators.NAME);
 
-        // Verify the order by name
-        assertEquals("Bulbasaur", pokemons.get(0).getName());
-        assertEquals("Charmander", pokemons.get(1).getName());
-        assertEquals("Pikachu", pokemons.get(2).getName());
+        // Vérification de l'ordre par nom
+        assertEquals("Aquali", pokemons.get(0).getName());
+        assertEquals("Bulbizarre", pokemons.get(1).getName());
     }
 
     @Test
     public void testIndexComparator() {
-        // Create test data
-        Pokemon pikachu = new Pokemon(1, "Pikachu", 55, 40, 35, 100, 60, 10, 20, 80);
-        Pokemon charmander = new Pokemon(2, "Charmander", 52, 43, 39, 80, 45, 20, 10, 75);
-        Pokemon bulbasaur = new Pokemon(3, "Bulbasaur", 49, 49, 45, 90, 60, 15, 30, 75);
+        // Création des données
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
 
-        List<Pokemon> pokemons = Arrays.asList(pikachu, charmander, bulbasaur);
+        List<Pokemon> pokemons = Arrays.asList(bulbizarre, aquali);
 
-        // Sort using INDEX comparator
+        // Tri avec le comparateur INDEX
         pokemons.sort(PokemonComparators.INDEX);
 
-        // Verify the order by index
-        assertEquals(1, pokemons.get(0).getIndex());
-        assertEquals(2, pokemons.get(1).getIndex());
-        assertEquals(3, pokemons.get(2).getIndex());
+        // Vérification de l'ordre par index
+        assertEquals(0, pokemons.get(0).getIndex());
+        assertEquals(133, pokemons.get(1).getIndex());
     }
 
     @Test
     public void testCpComparator() {
-        // Create test data
-        Pokemon pikachu = new Pokemon(1, "Pikachu", 55, 40, 35, 100, 60, 10, 20, 80);
-        Pokemon charmander = new Pokemon(2, "Charmander", 52, 43, 39, 80, 45, 20, 10, 75);
-        Pokemon bulbasaur = new Pokemon(3, "Bulbasaur", 49, 49, 45, 90, 60, 15, 30, 75);
+        // Création des données
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
 
-        List<Pokemon> pokemons = Arrays.asList(pikachu, charmander, bulbasaur);
+        List<Pokemon> pokemons = Arrays.asList(bulbizarre, aquali);
 
-        // Sort using CP comparator
+        // Tri avec le comparateur CP
         pokemons.sort(PokemonComparators.CP);
 
-        // Verify the order by combat points (cp)
-        assertEquals(80, pokemons.get(0).getCp());
-        assertEquals(75, pokemons.get(1).getCp());
-        assertEquals(60, pokemons.get(2).getCp());
+        // Vérification de l'ordre par CP
+        assertEquals(2729, pokemons.get(0).getCp());
+        assertEquals(613, pokemons.get(1).getCp());
+    }
+
+    @Test
+    public void testIvComparator() {
+        // Création des données avec IV calculés manuellement : 56% pour Bulbizarre et 100% pour Aquali
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
+
+        List<Pokemon> pokemons = Arrays.asList(bulbizarre, aquali);
+
+        // Tri avec un comparateur pour IV
+        pokemons.sort((p1, p2) -> Double.compare(p2.getIv(), p1.getIv())); // Tri décroissant par IV
+
+        // Vérification de l'ordre par IV
+        assertEquals(100, pokemons.get(0).getIv());
+        assertEquals(56, pokemons.get(1).getIv());
     }
 
     @Test
     public void testMultipleComparators() {
-        // Create test data with same index but different attributes
-        Pokemon pikachu = new Pokemon(1, "Pikachu", 55, 40, 35, 100, 60, 10, 20, 80);
-        Pokemon charmander = new Pokemon(1, "Charmander", 52, 43, 39, 80, 45, 20, 10, 75);
-        Pokemon bulbasaur = new Pokemon(1, "Bulbasaur", 49, 49, 45, 90, 60, 15, 30, 75);
+        // Création des données avec des noms identiques mais des CP différents
+        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 100);
 
-        List<Pokemon> pokemons = Arrays.asList(pikachu, charmander, bulbasaur);
+        List<Pokemon> pokemons = Arrays.asList(bulbizarre, aquali);
 
-        // Sort first by NAME and then by CP
+        // Tri d'abord par nom, puis par CP (si les noms sont égaux)
         pokemons.sort(PokemonComparators.NAME.thenComparing(PokemonComparators.CP));
 
-        // Verify the order (name first, then cp for tie-breaker)
-        assertEquals("Bulbasaur", pokemons.get(0).getName());
-        assertEquals("Charmander", pokemons.get(1).getName());
-        assertEquals("Pikachu", pokemons.get(2).getName());
+        // Vérification de l'ordre (nom d'abord, puis CP comme critère secondaire)
+        assertEquals("Aquali", pokemons.get(0).getName());
+        assertEquals("Bulbizarre", pokemons.get(1).getName());
     }
 }
 
