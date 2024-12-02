@@ -36,16 +36,13 @@ class PokemonTrainerFactoryTest {
     @Test
     void testCreateTrainerWithNullArguments() {
         // Création de la fabrique de PokemonTrainer
-        PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory();  // Déclaration ici aussi
+        PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory();
 
         // Regroupement des tests d'arguments null dans une seule invocation lambda
         assertThrows(NullPointerException.class, () -> {
-            // Cas où l'un des arguments est null (nom, équipe ou fabrique de Pokédex)
-            // Tester avec nom null
+            // Tester les trois cas où un argument est null en une seule invocation
             trainerFactory.createTrainer(null, Team.RED, new PokedexFactory());
-            // Tester avec équipe null
             trainerFactory.createTrainer("Ash Ketchum", null, new PokedexFactory());
-            // Tester avec fabrique de Pokedex null
             trainerFactory.createTrainer("Ash Ketchum", Team.RED, null);
         }, "Une exception NullPointerException devrait être lancée lorsque le nom, l'équipe ou la fabrique de Pokédex sont null.");
     }
@@ -60,7 +57,6 @@ class PokemonTrainerFactoryTest {
 
         // Test avec une équipe invalide dans une seule invocation lambda
         assertThrows(IllegalArgumentException.class, () -> {
-            // Tester avec une équipe invalide
             trainerFactory.createTrainer("Ash Ketchum", Team.valueOf("INVALID_TEAM"), pokedexFactory);
         }, "Une exception IllegalArgumentException devrait être lancée lorsque l'équipe est invalide.");
     }
