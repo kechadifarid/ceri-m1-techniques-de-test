@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PokemonMetadataProvider.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-project</a> &gt; <a href="index.source.html" class="el_package">fr.univavignon.pokedex.api</a> &gt; <span class="el_source">PokemonMetadataProvider.java</span></div><h1>PokemonMetadataProvider.java</h1><pre class="source lang-java linenums">package fr.univavignon.pokedex.api;
+
+import java.util.HashMap;
+import java.util.Map;
+
+<span class="nc" id="L6">public class PokemonMetadataProvider implements IPokemonMetadataProvider {</span>
+
+<span class="nc" id="L8">    private static final Map&lt;Integer, PokemonMetadata&gt; POKEMON_METADATA_DB = new HashMap&lt;&gt;();</span>
+
+    // Initialisation des données des Pokémon directement dans le code
+    static {
+<span class="nc" id="L12">        POKEMON_METADATA_DB.put(1, new PokemonMetadata(0, &quot;Bulbasaur&quot;, 126, 126, 90));</span>
+<span class="nc" id="L13">        POKEMON_METADATA_DB.put(2, new PokemonMetadata(1, &quot;Ivysaur&quot;, 156, 158, 120));</span>
+<span class="nc" id="L14">        POKEMON_METADATA_DB.put(3, new PokemonMetadata(2, &quot;Venusaur&quot;, 198, 200, 160));</span>
+        // Ajoutez ici les autres Pokémon nécessaires en suivant le même modèle
+<span class="nc" id="L16">    }</span>
+
+
+    /**
+     * Récupère et retourne les métadonnées du Pokémon identifié par l'index.
+     * @param index Index du Pokémon pour récupérer ses métadonnées.
+     * @return Les métadonnées du Pokémon.
+     * @throws PokedexException Si l'index donné n'est pas valide.
+     */
+    @Override
+    public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if (!POKEMON_METADATA_DB.containsKey(index)) {</span>
+<span class="nc" id="L28">            throw new PokedexException(&quot;Index invalide: Aucun Pokémon trouvé avec cet index.&quot;);</span>
+        }
+<span class="nc" id="L30">        return POKEMON_METADATA_DB.get(index);</span>
+    }
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
