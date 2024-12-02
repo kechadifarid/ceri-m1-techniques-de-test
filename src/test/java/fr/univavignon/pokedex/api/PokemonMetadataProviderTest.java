@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Tests for the PokemonMetadataProvider class.
  */
-public class PokemonMetadataProviderTest {
+class PokemonMetadataProviderTest {
 
     private final PokemonMetadataProvider provider = new PokemonMetadataProvider();
 

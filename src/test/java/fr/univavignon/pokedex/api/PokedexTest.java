@@ -3,8 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Comparator;
 import java.util.List;
-
-public class PokedexTest {
+class PokedexTest {
 
     @Test
     void testAddPokemon() throws PokedexException {

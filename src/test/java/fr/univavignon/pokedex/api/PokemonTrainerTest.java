@@ -15,7 +15,7 @@ class PokemonTrainerFactoryTest {
         Team trainerTeam = Team.RED;  // Vous pouvez aussi utiliser un autre enum de Team si nécessaire
 
         // Création de la fabrique de PokemonTrainer
-        PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory();  // Déclaration de trainerFactory ici
+        PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory();
 
         // Création de l'entraîneur via la fabrique
         PokemonTrainer trainer = trainerFactory.createTrainer(trainerName, trainerTeam, pokedexFactory);
@@ -34,24 +34,20 @@ class PokemonTrainerFactoryTest {
     }
 
     @Test
-  void testCreateTrainerWithNullArguments() {
+    void testCreateTrainerWithNullArguments() {
         // Création de la fabrique de PokemonTrainer
         PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory();  // Déclaration ici aussi
 
-        // Test avec le nom null
+        // Regroupement des tests d'arguments null dans une seule invocation lambda
         assertThrows(NullPointerException.class, () -> {
+            // Cas où l'un des arguments est null (nom, équipe ou fabrique de Pokédex)
+            // Tester avec nom null
             trainerFactory.createTrainer(null, Team.RED, new PokedexFactory());
-        }, "Une exception NullPointerException devrait être lancée lorsque le nom de l'entraîneur est null.");
-
-        // Test avec l'équipe null
-        assertThrows(NullPointerException.class, () -> {
+            // Tester avec équipe null
             trainerFactory.createTrainer("Ash Ketchum", null, new PokedexFactory());
-        }, "Une exception NullPointerException devrait être lancée lorsque l'équipe est null.");
-
-        // Test avec la fabrique de Pokedex null
-        assertThrows(NullPointerException.class, () -> {
+            // Tester avec fabrique de Pokedex null
             trainerFactory.createTrainer("Ash Ketchum", Team.RED, null);
-        }, "Une exception NullPointerException devrait être lancée lorsque la fabrique de Pokédex est null.");
+        }, "Une exception NullPointerException devrait être lancée lorsque le nom, l'équipe ou la fabrique de Pokédex sont null.");
     }
 
     @Test
@@ -60,12 +56,11 @@ class PokemonTrainerFactoryTest {
         IPokedexFactory pokedexFactory = new PokedexFactory();
 
         // Création de la fabrique de PokemonTrainer
-        PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory();  // Déclaration ici aussi
+        PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory();
 
-        // Test avec une équipe invalide (en supposant que vous avez une logique de validation d'équipe)
-        // Par exemple, vous pouvez tester une équipe non définie ou non valide
+        // Test avec une équipe invalide dans une seule invocation lambda
         assertThrows(IllegalArgumentException.class, () -> {
-            // Supposons qu'il n'y ait que deux équipes valides : Team.RED et Team.BLUE
+            // Tester avec une équipe invalide
             trainerFactory.createTrainer("Ash Ketchum", Team.valueOf("INVALID_TEAM"), pokedexFactory);
         }, "Une exception IllegalArgumentException devrait être lancée lorsque l'équipe est invalide.");
     }

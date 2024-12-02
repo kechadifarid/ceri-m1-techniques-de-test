@@ -2,7 +2,7 @@ package fr.univavignon.pokedex.api;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PokedexFactoryTest {
+class PokedexFactoryTest {
 
     @Test
    void testCreatePokedex() {
