@@ -1,34 +1,36 @@
-name: Build and Publish Javadoc
+name: Generate and Deploy Documentation
 
 on:
   push:
     branches:
-      - master  # La branche sur laquelle vous voulez déclencher le workflow
-  pull_request:
-    branches:
       - master
 
+permissions:                   # Permissions de lecture et écriture
+  contents: write               # Autorise l'accès en écriture pour les actions
+
 jobs:
-  build:
+  generate-docs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # Étape 1 : Checkout du code source
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      # Étape 2 : Setup Java
+      - name: Setup Java 21 (Corretto)
+        uses: actions/setup-java@v4
         with:
-          java-version: '11'
+          java-version: '21'
+          distribution: 'corretto'
 
-      - name: Build project and generate Javadoc
-        run: mvn clean javadoc:javadoc
+      # Étape 3 : Générer la documentation avec Maven
+      - name: Generate JavaDoc
+        run: mvn -B javadoc:javadoc
 
-      - name: Publish Javadoc to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # Étape 4 : Déploiement sur GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}  # Utilisez le token de votre dépôt pour l'authentification
-          publish_dir: target/site/apidocs  # Le dossier où la Javadoc est générée
-          publish_branch: gh-pages  # Branche où publier la Javadoc
-          user_name: 'GitHub Actions'  # Nom de l'utilisateur
-          user_email: 'github-actions[bot]@users.noreply.github.com'  # Email de l'utilisateur
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Utilisation de GITHUB_TOKEN pour les permissions d'écriture
+          publish_dir: ./target/reports/apidocs
