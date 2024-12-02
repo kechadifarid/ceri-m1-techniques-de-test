@@ -61,6 +61,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Plugin Checkstyle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <!-- Fichier de configuration Checkstyle -->
+                    <configLocation>google_checks.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <failsOnError>true</failsOnError> <!-- Arrête le build si des erreurs sont détectées -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- Exécuter Checkstyle pendant la phase "verify" -->
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -78,7 +100,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.10.0</version>

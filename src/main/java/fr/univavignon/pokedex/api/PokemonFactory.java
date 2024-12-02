@@ -11,5 +11,30 @@ public class PokemonFactory implements IPokemonFactory {
 
         return new Pokemon(index, pokemonMetadata.getName(), pokemonMetadata.getAttack(), pokemonMetadata.getDefense(), pokemonMetadata.getStamina(), cp,hp, dust,candy,iv);
 
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

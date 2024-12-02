@@ -6,7 +6,7 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/kechadifarid/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/kechadifarid/ceri-m1-techniques-de-test/tree/master)
 [![codecov](https://codecov.io/gh/kechadifarid/ceri-m1-techniques-de-test/graph/badge.svg?token=6IANL9DVY2)](https://codecov.io/gh/kechadifarid/ceri-m1-techniques-de-test)
-
+[![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=kechadifarid_ceri-m1-techniques-de-test&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kechadifarid_ceri-m1-techniques-de-test)
 ## Introduction
 
 Vous allez à travers ces projet mettre en application une partie des aspects évoqués en cours vis à vis des techniques de tests.  
