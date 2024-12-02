@@ -16,12 +16,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
     }
 
 
-    /**
-     * Récupère et retourne les métadonnées du Pokémon identifié par l'index.
-     * @param index Index du Pokémon pour récupérer ses métadonnées.
-     * @return Les métadonnées du Pokémon.
-     * @throws PokedexException Si l'index donné n'est pas valide.
-     */
+
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
         if (!POKEMON_METADATA_DB.containsKey(index)) {
