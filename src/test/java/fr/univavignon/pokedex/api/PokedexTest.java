@@ -7,7 +7,7 @@ import java.util.List;
 public class PokedexTest {
 
     @Test
-    public void testAddPokemon() throws PokedexException {
+    void testAddPokemon() throws PokedexException {
         // Création de l'instance de Pokedex avec des mocks pour les providers
         IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
         IPokemonFactory pokemonFactory = new PokemonFactory();
@@ -25,7 +25,7 @@ public class PokedexTest {
     }
 
     @Test
-    public void testGetPokemonValid() throws PokedexException {
+    void testGetPokemonValid() throws PokedexException {
         // Création de l'instance de Pokedex
         IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
         IPokemonFactory pokemonFactory = new PokemonFactory();
@@ -45,7 +45,7 @@ public class PokedexTest {
     }
 
     @Test
-    public void testGetPokemonInvalidIndex() {
+    void testGetPokemonInvalidIndex() {
         // Création de l'instance de Pokedex
         IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
         IPokemonFactory pokemonFactory = new PokemonFactory();
@@ -61,7 +61,7 @@ public class PokedexTest {
     }
 
     @Test
-    public void testGetPokemonsSorted() throws PokedexException {
+    void testGetPokemonsSorted() throws PokedexException {
         // Création de l'instance de Pokedex
         IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
         IPokemonFactory pokemonFactory = new PokemonFactory();
@@ -85,7 +85,7 @@ public class PokedexTest {
     }
 
     @Test
-    public void testGetPokemonsUnsorted() throws PokedexException {
+    void testGetPokemonsUnsorted() throws PokedexException {
         // Création de l'instance de Pokedex
         IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
         IPokemonFactory pokemonFactory = new PokemonFactory();

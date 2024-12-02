@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 
 class IPokemonMetadataProviderTest {
     @Test
-    public void testGetPokemonMetadata_ValidIndex_0() throws PokedexException {
+   void testGetPokemonMetadata_ValidIndex_0() throws PokedexException {
         IPokemonMetadataProvider factory = Mockito.mock(IPokemonMetadataProvider.class);
 
         when(factory.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));

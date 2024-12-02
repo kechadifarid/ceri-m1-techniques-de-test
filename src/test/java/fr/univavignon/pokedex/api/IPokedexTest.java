@@ -19,14 +19,14 @@ class IPokedexTest {
 
     // Méthode exécutée avant chaque test pour initialiser les mocks
     @BeforeEach
-    public void setup() {
+    void setup() {
         // Création d'un mock pour l'interface IPokedex
         ipokedex = Mockito.mock(IPokedex.class);
     }
 
     // Test pour vérifier l'ajout de Pokémon
     @Test
-    public void pokemonAddTest() {
+   void pokemonAddTest() {
         // Configuration des retours de la méthode 'addPokemon' pour les Pokémon
         when(ipokedex.addPokemon(bulbizarre)).thenReturn(0); // Bulbizarre sera ajouté à l'index 0
         when(ipokedex.addPokemon(aquali)).thenReturn(1); // Aquali sera ajouté à l'index 1

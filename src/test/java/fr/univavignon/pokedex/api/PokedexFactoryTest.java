@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PokedexFactoryTest {
 
     @Test
-    public void testCreatePokedex() {
+   void testCreatePokedex() {
         // Création des mocks ou des objets réels nécessaires
         IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
         IPokemonFactory pokemonFactory = new PokemonFactory();
@@ -29,7 +29,7 @@ public class PokedexFactoryTest {
     }
 
     @Test
-    public void testCreatePokedexWithNullArguments() {
+   void testCreatePokedexWithNullArguments() {
         // Création de l'instance de la fabrique
         PokedexFactory pokedexFactory = new PokedexFactory();
 

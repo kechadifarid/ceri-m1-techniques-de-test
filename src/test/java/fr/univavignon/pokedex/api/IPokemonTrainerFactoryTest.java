@@ -16,7 +16,7 @@ class IPokemonTrainerFactoryTest {
 
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         // Mock de IPokemonTrainerFactory, IPokedexFactory, et IPokedex
         pokemonTrainerFactory = Mockito.mock(IPokemonTrainerFactory.class);
         pokedexFactory = Mockito.mock(IPokedexFactory.class);
@@ -31,7 +31,7 @@ class IPokemonTrainerFactoryTest {
     }
 
     @Test
-    public void testCreateTrainer() {
+    void testCreateTrainer() {
         // Utilisation du mock pour créer un nouveau PokemonTrainer
         PokemonTrainer createdTrainer = pokemonTrainerFactory.createTrainer("Ash", Team.VALOR, pokedexFactory);
 

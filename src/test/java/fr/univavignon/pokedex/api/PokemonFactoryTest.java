@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PokemonFactoryTest {
 
     @Test
-    public void testCreatePokemonValid() throws PokedexException {
+    void testCreatePokemonValid() throws PokedexException {
         // Création de l'instance de PokemonFactory
         PokemonFactory factory = new PokemonFactory();
 
@@ -28,7 +28,7 @@ public class PokemonFactoryTest {
     }
 
     @Test
-    public void testCreatePokemonInvalidIndex() {
+    void testCreatePokemonInvalidIndex() {
         // Création de l'instance de PokemonFactory
         PokemonFactory factory = new PokemonFactory();
 
@@ -42,7 +42,7 @@ public class PokemonFactoryTest {
     }
 
     @Test
-    public void testCreatePokemonWithIvCalculation() throws PokedexException {
+    void testCreatePokemonWithIvCalculation() throws PokedexException {
         // Création de l'instance de PokemonFactory
         PokemonFactory factory = new PokemonFactory();
 

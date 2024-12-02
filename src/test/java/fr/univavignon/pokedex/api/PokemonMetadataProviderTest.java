@@ -11,7 +11,7 @@ public class PokemonMetadataProviderTest {
     private final PokemonMetadataProvider provider = new PokemonMetadataProvider();
 
     @Test
-    public void testGetPokemonMetadataValid() throws PokedexException {
+    void testGetPokemonMetadataValid() throws PokedexException {
         // Teste si la méthode retourne les bonnes métadonnées pour un index valide
         PokemonMetadata metadata = provider.getPokemonMetadata(1);
 
@@ -23,7 +23,7 @@ public class PokemonMetadataProviderTest {
     }
 
     @Test
-    public void testGetPokemonMetadataInvalid() {
+    void testGetPokemonMetadataInvalid() {
         // Teste si la méthode lance une exception pour un index invalide
         PokedexException exception = assertThrows(PokedexException.class, () -> {
             provider.getPokemonMetadata(999); // Index invalide qui n'existe pas
@@ -33,7 +33,7 @@ public class PokemonMetadataProviderTest {
     }
 
     @Test
-    public void testGetPokemonMetadataNonExistentIndex() {
+    void testGetPokemonMetadataNonExistentIndex() {
         // Teste avec un index non existant dans la base de données
         PokedexException exception = assertThrows(PokedexException.class, () -> {
             provider.getPokemonMetadata(4); // L'index 4 n'existe pas dans les données statiques
@@ -43,7 +43,7 @@ public class PokemonMetadataProviderTest {
     }
 
     @Test
-    public void testGetPokemonMetadataMultipleValidIndexes() throws PokedexException {
+    void testGetPokemonMetadataMultipleValidIndexes() throws PokedexException {
         // Teste plusieurs index valides pour vérifier si les données sont récupérées correctement
         PokemonMetadata bulbasaur = provider.getPokemonMetadata(1);
         PokemonMetadata ivysaur = provider.getPokemonMetadata(2);
