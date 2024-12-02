@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PokemonTrainerFactoryTest {
 
     @Test
-    public void testCreateTrainer() {
+    void testCreateTrainer() {
         // Création d'une fabrique de Pokedex
         IPokedexFactory pokedexFactory = new PokedexFactory();
 
@@ -34,7 +34,7 @@ class PokemonTrainerFactoryTest {
     }
 
     @Test
-    public void testCreateTrainerWithNullArguments() {
+  void testCreateTrainerWithNullArguments() {
         // Création de la fabrique de PokemonTrainer
         PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory();  // Déclaration ici aussi
 
@@ -55,7 +55,7 @@ class PokemonTrainerFactoryTest {
     }
 
     @Test
-    public void testCreateTrainerWithInvalidTeam() {
+    void testCreateTrainerWithInvalidTeam() {
         // Création de la fabrique de Pokedex
         IPokedexFactory pokedexFactory = new PokedexFactory();
 
