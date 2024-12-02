@@ -3,10 +3,10 @@ name: Build and Publish Javadoc
 on:
   push:
     branches:
-      - main  # La branche sur laquelle vous voulez déclencher le workflow
+      - master  # La branche sur laquelle vous voulez déclencher le workflow
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
