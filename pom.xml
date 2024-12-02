@@ -19,6 +19,7 @@
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
+            <!-- Plugin de Compilation -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -28,6 +29,8 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+
+            <!-- Plugin Maven Shade (pour l'assemblage du JAR) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -41,6 +44,7 @@
                     </execution>
                 </executions>
             </plugin>
+
             <!-- Plugin JaCoCo pour la couverture de code -->
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -61,23 +65,36 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Plugin Checkstyle -->
+
+            <!-- Plugin Checkstyle pour vérifier la qualité du code -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <!-- Fichier de configuration Checkstyle -->
                     <configLocation>google_checks.xml</configLocation>
                     <encoding>UTF-8</encoding>
                     <failsOnError>true</failsOnError> <!-- Arrête le build si des erreurs sont détectées -->
                 </configuration>
                 <executions>
                     <execution>
-                        <!-- Exécuter Checkstyle pendant la phase "verify" -->
                         <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Plugin pour générer la Javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>javadoc</goal>
                         </goals>
                     </execution>
                 </executions>
