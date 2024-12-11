@@ -38,8 +38,8 @@ jobs:
             # Configure Git
             git config --global user.email "kechadifarid10@gmail.com"
             git config --global user.name "kechadifarid"
-            # Clone the gh-pages branch
-            git clone --branch gh-pages $Token@https://github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
+            # Clone the gh-pages branch with the token
+            git clone --branch gh-pages https://$GH_TOKEN@github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
             # Copy the Javadoc
             rm -rf gh-pages/*
             cp -r target/site/apidocs/* gh-pages/
@@ -47,7 +47,7 @@ jobs:
             cd gh-pages
             git add .
             git commit -m "Update Javadoc [ci skip]"
-            git push $Token@https://github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
+            git push https://$GH_TOKEN@github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
 
 workflows:
   upload-to-codecov-and-deploy-javadoc:
