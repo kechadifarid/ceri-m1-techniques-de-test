@@ -39,7 +39,7 @@ jobs:
             git config --global user.email "kechadifarid10@gmail.com"
             git config --global user.name "kechadifarid"
             # Clone the gh-pages branch
-            git clone --branch gh-pages https://https://github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
+            git clone --branch gh-pages https://github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
             # Copy the Javadoc
             rm -rf gh-pages/*
             cp -r target/site/apidocs/* gh-pages/
