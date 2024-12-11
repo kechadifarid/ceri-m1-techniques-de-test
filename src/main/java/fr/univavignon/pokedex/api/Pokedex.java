@@ -46,6 +46,7 @@ public class Pokedex implements IPokedex {
 
     @Override
     public List<Pokemon> getPokemons() {
+
         return List.copyOf(pokemons);  // Renvoie une copie non modifiable de la liste des Pokémon
     }
 
