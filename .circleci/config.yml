@@ -26,6 +26,9 @@ jobs:
           name: Run Checkstyle
           command: mvn checkstyle:check
       - run:
+          name: Generating badge
+          command: mvn badger:badges
+      - run:
           name: Generate Badges (Badger)
           command: mvn clean verify
 
