@@ -13,7 +13,7 @@
 
         <!-- Vérifie que toutes les méthodes ont des Javadoc -->
         <module name="JavadocMethod">
-            <property name="checkEmptyJavadoc" value="true"/>
+            <!-- Pas de propriété 'checkEmptyJavadoc', mais vous pouvez configurer des annotations autorisées -->
             <property name="allowedAnnotations" value="Override"/>
         </module>
 

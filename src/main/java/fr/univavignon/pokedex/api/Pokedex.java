@@ -6,10 +6,22 @@ import java.util.List;
 
 public class Pokedex implements IPokedex {
 
-    // Liste qui contiendra tous les Pokémon capturés
+    /**
+     * Liste qui contient tous les Pokémon capturés.
+     * Cette liste est initialisée au démarrage et sera remplie à mesure que les Pokémon sont capturés.
+     */
     private final List<Pokemon> pokemons = new ArrayList<>();
 
+
+
+    /**
+     * Constructeur de la classe Pokedex.
+     *
+     * @param metadataProvider Un fournisseur de métadonnées Pokémon qui permet de récupérer des informations détaillées sur les Pokémon.
+     * @param pokemonFactory  Une usine qui crée des instances de Pokémon à partir des métadonnées.
+     */
     public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
+
     }
 
     @Override
