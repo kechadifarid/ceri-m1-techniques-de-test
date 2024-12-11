@@ -70,18 +70,37 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <configLocation>google_checks.xml</configLocation>
-                    <encoding>UTF-8</encoding>
-                    <failsOnError>true</failsOnError> <!-- Arrête le build si des erreurs sont détectées -->
-                </configuration>
+                <version>3.3.1</version>
                 <executions>
                     <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>checkstyle</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <configLocation>checkStyle.xml</configLocation>
+                </configuration>
+            </plugin>
+            <!-- Badger Plugin -->
+            <plugin>
+                <groupId>com.github.bordertech.buildtools</groupId>
+                <artifactId>badger</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <id>verify</id>
                         <phase>verify</phase>
                         <goals>
-                            <goal>check</goal>
+                            <goal>badges</goal>
                         </goals>
+                        <configuration>
+                            <outputDir>${project.build.directory}/badges</outputDir>
+                            <inputFiles>
+                                <inputFile>target/checkstyle-result.xml</inputFile>
+                            </inputFiles>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

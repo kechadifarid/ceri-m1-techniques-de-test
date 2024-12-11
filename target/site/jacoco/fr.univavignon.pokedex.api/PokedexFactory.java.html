@@ -4,12 +4,16 @@
  * Implémentation de l'interface IPokedexFactory.
  * Cette classe crée une instance de Pokédex en utilisant les fournisseurs de métadonnées et la fabrique de Pokémon.
  */
-<span class="nc" id="L7">public class PokedexFactory implements IPokedexFactory {</span>
+<span class="fc" id="L7">public class PokedexFactory implements IPokedexFactory {</span>
 
     @Override
     public IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
-        // Création d'un objet Pokedex avec les services de métadonnées et de fabrique de Pokémon
-<span class="nc" id="L12">        return new Pokedex(metadataProvider, pokemonFactory);</span>
+        // Vérification des arguments pour éviter les valeurs nulles
+<span class="fc bfc" id="L12" title="All 4 branches covered.">        if (metadataProvider == null || pokemonFactory == null) {</span>
+<span class="fc" id="L13">            throw new NullPointerException(&quot;Les fournisseurs de métadonnées et de fabrication de Pokémon ne peuvent pas être null.&quot;);</span>
+        }
+<span class="fc" id="L15">        return new Pokedex(metadataProvider, pokemonFactory);</span>
     }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

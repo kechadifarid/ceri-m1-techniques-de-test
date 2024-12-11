@@ -3,31 +3,26 @@
 import java.util.HashMap;
 import java.util.Map;
 
-<span class="nc" id="L6">public class PokemonMetadataProvider implements IPokemonMetadataProvider {</span>
+<span class="fc" id="L6">public class PokemonMetadataProvider implements IPokemonMetadataProvider {</span>
 
-<span class="nc" id="L8">    private static final Map&lt;Integer, PokemonMetadata&gt; POKEMON_METADATA_DB = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L8">    private static final Map&lt;Integer, PokemonMetadata&gt; POKEMON_METADATA_DB = new HashMap&lt;&gt;();</span>
 
     // Initialisation des données des Pokémon directement dans le code
     static {
-<span class="nc" id="L12">        POKEMON_METADATA_DB.put(1, new PokemonMetadata(0, &quot;Bulbasaur&quot;, 126, 126, 90));</span>
-<span class="nc" id="L13">        POKEMON_METADATA_DB.put(2, new PokemonMetadata(1, &quot;Ivysaur&quot;, 156, 158, 120));</span>
-<span class="nc" id="L14">        POKEMON_METADATA_DB.put(3, new PokemonMetadata(2, &quot;Venusaur&quot;, 198, 200, 160));</span>
+<span class="fc" id="L12">        POKEMON_METADATA_DB.put(1, new PokemonMetadata(0, &quot;Bulbasaur&quot;, 126, 126, 90));</span>
+<span class="fc" id="L13">        POKEMON_METADATA_DB.put(2, new PokemonMetadata(1, &quot;Ivysaur&quot;, 156, 158, 120));</span>
+<span class="fc" id="L14">        POKEMON_METADATA_DB.put(3, new PokemonMetadata(2, &quot;Venusaur&quot;, 198, 200, 160));</span>
         // Ajoutez ici les autres Pokémon nécessaires en suivant le même modèle
-<span class="nc" id="L16">    }</span>
+<span class="fc" id="L16">    }</span>
 
 
-    /**
-     * Récupère et retourne les métadonnées du Pokémon identifié par l'index.
-     * @param index Index du Pokémon pour récupérer ses métadonnées.
-     * @return Les métadonnées du Pokémon.
-     * @throws PokedexException Si l'index donné n'est pas valide.
-     */
+
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-<span class="nc bnc" id="L27" title="All 2 branches missed.">        if (!POKEMON_METADATA_DB.containsKey(index)) {</span>
-<span class="nc" id="L28">            throw new PokedexException(&quot;Index invalide: Aucun Pokémon trouvé avec cet index.&quot;);</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (!POKEMON_METADATA_DB.containsKey(index)) {</span>
+<span class="fc" id="L23">            throw new PokedexException(&quot;Index invalide: Aucun Pokémon trouvé avec cet index.&quot;);</span>
         }
-<span class="nc" id="L30">        return POKEMON_METADATA_DB.get(index);</span>
+<span class="fc" id="L25">        return POKEMON_METADATA_DB.get(index);</span>
     }
 
 

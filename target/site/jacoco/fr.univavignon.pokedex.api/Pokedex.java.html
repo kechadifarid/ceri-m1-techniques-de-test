@@ -7,57 +7,57 @@ import java.util.List;
 public class Pokedex implements IPokedex {
 
     // Liste qui contiendra tous les Pokémon capturés
-<span class="nc" id="L10">    private final List&lt;Pokemon&gt; pokemons = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L10">    private final List&lt;Pokemon&gt; pokemons = new ArrayList&lt;&gt;();</span>
 
-<span class="nc" id="L12">    public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {</span>
-<span class="nc" id="L13">    }</span>
+<span class="fc" id="L12">    public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {</span>
+<span class="fc" id="L13">    }</span>
 
     @Override
     public int size() {
-<span class="nc" id="L17">        return pokemons.size();  // Renvoie le nombre de Pokémon dans le Pokédex</span>
+<span class="fc" id="L17">        return pokemons.size();  // Renvoie le nombre de Pokémon dans le Pokédex</span>
     }
 
     @Override
     public int addPokemon(Pokemon pokemon) {
         // Ajoute un Pokémon à la liste et renvoie son index relatif
-<span class="nc" id="L23">        pokemons.add(pokemon);</span>
-<span class="nc" id="L24">        return pokemons.size() - 1;  // L'index est l'indice du Pokémon ajouté dans la liste</span>
+<span class="fc" id="L23">        pokemons.add(pokemon);</span>
+<span class="fc" id="L24">        return pokemons.size() - 1;  // L'index est l'indice du Pokémon ajouté dans la liste</span>
     }
 
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-<span class="nc bnc" id="L29" title="All 4 branches missed.">        if (id &lt; 0 || id &gt;= pokemons.size()) {</span>
-<span class="nc" id="L30">            throw new PokedexException(&quot;Index invalide : aucun Pokémon trouvé avec cet id.&quot;);</span>
+<span class="pc bpc" id="L29" title="1 of 4 branches missed.">        if (id &lt; 0 || id &gt;= pokemons.size()) {</span>
+<span class="fc" id="L30">            throw new PokedexException(&quot;Index invalide : aucun Pokémon trouvé avec cet id.&quot;);</span>
         }
-<span class="nc" id="L32">        return pokemons.get(id);  // Renvoie le Pokémon correspondant à l'id</span>
+<span class="fc" id="L32">        return pokemons.get(id);  // Renvoie le Pokémon correspondant à l'id</span>
     }
 
     @Override
     public List&lt;Pokemon&gt; getPokemons() {
-<span class="nc" id="L37">        return List.copyOf(pokemons);  // Renvoie une copie non modifiable de la liste des Pokémon</span>
+<span class="fc" id="L37">        return List.copyOf(pokemons);  // Renvoie une copie non modifiable de la liste des Pokémon</span>
     }
 
     @Override
     public List&lt;Pokemon&gt; getPokemons(Comparator&lt;Pokemon&gt; order) {
-<span class="nc" id="L42">        List&lt;Pokemon&gt; sortedList = new ArrayList&lt;&gt;(pokemons);  // Crée une copie de la liste</span>
-<span class="nc" id="L43">        sortedList.sort(order);  // Trie la copie selon le comparateur fourni</span>
-<span class="nc" id="L44">        return List.copyOf(sortedList);  // Renvoie une version non modifiable de la liste triée</span>
+<span class="fc" id="L42">        List&lt;Pokemon&gt; sortedList = new ArrayList&lt;&gt;(pokemons);  // Crée une copie de la liste</span>
+<span class="fc" id="L43">        sortedList.sort(order);  // Trie la copie selon le comparateur fourni</span>
+<span class="fc" id="L44">        return List.copyOf(sortedList);  // Renvoie une version non modifiable de la liste triée</span>
     }
 
     // Implémentation des méthodes de IPokemonMetadataProvider
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
         // Utilisation de PokemonMetadataProvider pour récupérer les métadonnées
-<span class="nc" id="L51">        PokemonMetadataProvider provider = new PokemonMetadataProvider();</span>
-<span class="nc" id="L52">        return provider.getPokemonMetadata(index);</span>
+<span class="fc" id="L51">        PokemonMetadataProvider provider = new PokemonMetadataProvider();</span>
+<span class="fc" id="L52">        return provider.getPokemonMetadata(index);</span>
     }
 
     // Implémentation des méthodes de IPokemonFactory
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) throws PokedexException {
         // Utilisation de PokemonFactory pour créer un Pokémon
-<span class="nc" id="L59">        PokemonFactory factory = new PokemonFactory();</span>
-<span class="nc" id="L60">        return factory.createPokemon(index, cp, hp, dust, candy);</span>
+<span class="fc" id="L59">        PokemonFactory factory = new PokemonFactory();</span>
+<span class="fc" id="L60">        return factory.createPokemon(index, cp, hp, dust, candy);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
