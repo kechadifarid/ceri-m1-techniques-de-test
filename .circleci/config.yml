@@ -4,7 +4,7 @@ orbs:
   codecov: codecov/codecov@4.0.1
 
 jobs:
-  # Job to build and test the project
+  # Job to build, test, and check the code style
   build-and-test:
     docker:
       - image: cimg/openjdk:21.0
@@ -22,6 +22,9 @@ jobs:
       - run:
           name: Upload Coverage to Codecov
           command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
+      - run:
+          name: Run Checkstyle
+          command: mvn checkstyle:check
 
   # Job to generate and deploy Javadoc
   generate-and-deploy-javadoc:

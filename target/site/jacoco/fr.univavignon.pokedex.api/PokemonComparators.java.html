@@ -2,34 +2,55 @@
 
 import java.util.Comparator;
 
+/**
+ * Enumération des différents comparateurs pour trier les objets {@link Pokemon}.
+ * Cette classe fournit plusieurs façons de trier les Pokémon en fonction de leurs
+ * propriétés : par nom, par index ou par CP (Combat Power).
+ *
+ * Chaque comparateur est implémenté en utilisant un {@link Comparator} spécifique
+ * à la propriété souhaitée du Pokémon.
+ */
+<span class="nc" id="L13">public enum PokemonComparators implements Comparator&lt;Pokemon&gt; {</span>
 
-<span class="nc" id="L6">public enum PokemonComparators implements Comparator&lt;Pokemon&gt; {</span>
+	/**
+	 * Comparateur qui trie les Pokémon par leur nom.
+	 */
+<span class="nc" id="L18">	NAME(Comparator.comparing(Pokemon::getName)),</span>
 
+	/**
+	 * Comparateur qui trie les Pokémon par leur index.
+	 */
+<span class="nc" id="L23">	INDEX(Comparator.comparing(Pokemon::getIndex)),</span>
 
-<span class="nc" id="L9">	NAME(Comparator.comparing(Pokemon::getName)),</span>
+	/**
+	 * Comparateur qui trie les Pokémon par leur CP (Combat Power).
+	 */
+<span class="nc" id="L28">	CP(Comparator.comparing(Pokemon::getCp));</span>
 
-
-<span class="nc" id="L12">	INDEX(Comparator.comparing(Pokemon::getIndex)),</span>
-	
-
-<span class="nc" id="L15">	CP(Comparator.comparing(Pokemon::getCp))</span>
-	
-	;
-	
-
+	/** Le comparateur spécifique à cette enum, utilisé pour effectuer les comparaisons. */
 	private final Comparator&lt;Pokemon&gt; delegate;
 
+	/**
+	 * Constructeur pour initialiser le comparateur avec un {@link Comparator} spécifique.
+	 *
+	 * @param delegate Le {@link Comparator} utilisé pour effectuer la comparaison entre Pokémon.
+	 */
+<span class="nc" id="L38">	private PokemonComparators(final Comparator&lt;Pokemon&gt; delegate) {</span>
+<span class="nc" id="L39">		this.delegate = delegate;</span>
+<span class="nc" id="L40">	}</span>
 
-<span class="nc" id="L23">	private PokemonComparators(final Comparator&lt;Pokemon&gt; delegate) {</span>
-<span class="nc" id="L24">		this.delegate = delegate;</span>
-<span class="nc" id="L25">	}</span>
-
-
+	/**
+	 * Effectue la comparaison entre deux Pokémon en fonction du comparateur sélectionné.
+	 * Cette méthode délègue la comparaison au comparateur correspondant à l'instance de l'enum.
+	 *
+	 * @param first Le premier Pokémon à comparer.
+	 * @param second Le second Pokémon à comparer.
+	 * @return Un entier négatif, zéro ou positif selon que le premier Pokémon soit plus petit,
+	 *         égal ou plus grand que le second, selon le comparateur sélectionné.
+	 */
 	@Override
 	public int compare(final Pokemon first, final Pokemon second) {
-		
-<span class="nc" id="L31">		return delegate.compare(first, second);</span>
+<span class="nc" id="L53">		return delegate.compare(first, second);</span>
 	}
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

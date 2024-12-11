@@ -3,29 +3,41 @@
 import java.util.HashMap;
 import java.util.Map;
 
-<span class="fc" id="L6">public class PokemonMetadataProvider implements IPokemonMetadataProvider {</span>
+/**
+ * Fournisseur des métadonnées des Pokémon. Cette classe fournit un accès aux informations de base
+ * sur les Pokémon (comme l'index, le nom, les statistiques) via la méthode {@link #getPokemonMetadata(int)}.
+ * Les métadonnées des Pokémon sont stockées dans une base de données interne simulée.
+ */
+<span class="fc" id="L11">public class PokemonMetadataProvider implements IPokemonMetadataProvider {</span>
 
-<span class="fc" id="L8">    private static final Map&lt;Integer, PokemonMetadata&gt; POKEMON_METADATA_DB = new HashMap&lt;&gt;();</span>
+    /** Base de données simulée des métadonnées des Pokémon, indexée par l'index du Pokémon. */
+<span class="fc" id="L14">    private static final Map&lt;Integer, PokemonMetadata&gt; POKEMON_METADATA_DB = new HashMap&lt;&gt;();</span>
 
     // Initialisation des données des Pokémon directement dans le code
     static {
-<span class="fc" id="L12">        POKEMON_METADATA_DB.put(1, new PokemonMetadata(0, &quot;Bulbasaur&quot;, 126, 126, 90));</span>
-<span class="fc" id="L13">        POKEMON_METADATA_DB.put(2, new PokemonMetadata(1, &quot;Ivysaur&quot;, 156, 158, 120));</span>
-<span class="fc" id="L14">        POKEMON_METADATA_DB.put(3, new PokemonMetadata(2, &quot;Venusaur&quot;, 198, 200, 160));</span>
+        // Ajout de quelques Pokémon à la base de données interne
+<span class="fc" id="L19">        POKEMON_METADATA_DB.put(1, new PokemonMetadata(0, &quot;Bulbasaur&quot;, 126, 126, 90));</span>
+<span class="fc" id="L20">        POKEMON_METADATA_DB.put(2, new PokemonMetadata(1, &quot;Ivysaur&quot;, 156, 158, 120));</span>
+<span class="fc" id="L21">        POKEMON_METADATA_DB.put(3, new PokemonMetadata(2, &quot;Venusaur&quot;, 198, 200, 160));</span>
         // Ajoutez ici les autres Pokémon nécessaires en suivant le même modèle
-<span class="fc" id="L16">    }</span>
+<span class="fc" id="L23">    }</span>
 
-
-
+    /**
+     * Retourne les métadonnées d'un Pokémon spécifié par son index.
+     * Si l'index du Pokémon n'existe pas dans la base de données, une exception {@link PokedexException} est levée.
+     *
+     * @param index L'index du Pokémon dont les métadonnées doivent être récupérées.
+     * @return Les métadonnées du Pokémon correspondant à l'index spécifié.
+     * @throws PokedexException Si aucun Pokémon n'est trouvé avec l'index donné.
+     */
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (!POKEMON_METADATA_DB.containsKey(index)) {</span>
-<span class="fc" id="L23">            throw new PokedexException(&quot;Index invalide: Aucun Pokémon trouvé avec cet index.&quot;);</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if (!POKEMON_METADATA_DB.containsKey(index)) {</span>
+            // Lève une exception si le Pokémon avec l'index spécifié n'existe pas
+<span class="fc" id="L37">            throw new PokedexException(&quot;Index invalide: Aucun Pokémon trouvé avec cet index.&quot;);</span>
         }
-<span class="fc" id="L25">        return POKEMON_METADATA_DB.get(index);</span>
+        // Retourne les métadonnées du Pokémon correspondant à l'index
+<span class="fc" id="L40">        return POKEMON_METADATA_DB.get(index);</span>
     }
-
-
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

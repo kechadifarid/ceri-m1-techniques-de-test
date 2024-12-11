@@ -1,54 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PokemonMetadata.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java-project</a> &gt; <a href="index.source.html" class="el_package">fr.univavignon.pokedex.api</a> &gt; <span class="el_source">PokemonMetadata.java</span></div><h1>PokemonMetadata.java</h1><pre class="source lang-java linenums">package fr.univavignon.pokedex.api;
 
-
+/**
+ * Classe représentant les métadonnées d'un Pokémon.
+ * Elle contient les informations de base sur un Pokémon comme son index, son nom,
+ * et ses statistiques de combat (attaque, défense, endurance).
+ */
 public class PokemonMetadata {
 
-
+	/** L'index du Pokémon, unique pour chaque Pokémon dans le Pokedex. */
 	private final int index;
 
-
+	/** Le nom du Pokémon. */
 	private final String name;
 
-
+	/** La valeur de l'attaque du Pokémon, utilisée pour calculer les dégâts infligés. */
 	private final int attack;
 
+	/** La valeur de la défense du Pokémon, utilisée pour réduire les dégâts subis. */
 	private final int defense;
 
-
+	/** La valeur de l'endurance (stamina) du Pokémon, utilisée pour calculer ses PV (points de vie). */
 	private final int stamina;
 
+	/**
+	 * Constructeur pour initialiser les métadonnées d'un Pokémon avec les valeurs spécifiées.
+	 *
+	 * @param index L'index unique du Pokémon dans le Pokedex.
+	 * @param name Le nom du Pokémon.
+	 * @param attack La valeur de l'attaque du Pokémon.
+	 * @param defense La valeur de la défense du Pokémon.
+	 * @param stamina La valeur de l'endurance du Pokémon.
+	 */
+<span class="fc" id="L34">	public PokemonMetadata(final int index, final String name, final int attack, final int defense, final int stamina) {</span>
+<span class="fc" id="L35">		this.index = index;</span>
+<span class="fc" id="L36">		this.name = name;</span>
+<span class="fc" id="L37">		this.attack = attack;</span>
+<span class="fc" id="L38">		this.defense = defense;</span>
+<span class="fc" id="L39">		this.stamina = stamina;</span>
+<span class="fc" id="L40">	}</span>
 
-<span class="fc" id="L21">	public PokemonMetadata(final int index, final String name, final int attack, final int defense, final int stamina) {</span>
-<span class="fc" id="L22">		this.index = index;</span>
-<span class="fc" id="L23">		this.name = name;</span>
-<span class="fc" id="L24">		this.attack = attack;</span>
-<span class="fc" id="L25">		this.defense = defense;</span>
-<span class="fc" id="L26">		this.stamina = stamina;</span>
-<span class="fc" id="L27">	}</span>
-	
-
+	/**
+	 * Retourne l'index unique du Pokémon.
+	 *
+	 * @return L'index du Pokémon.
+	 */
 	public int getIndex() {
-<span class="fc" id="L31">		return index;</span>
+<span class="fc" id="L48">		return index;</span>
 	}
-	
 
+	/**
+	 * Retourne le nom du Pokémon.
+	 *
+	 * @return Le nom du Pokémon.
+	 */
 	public String getName() {
-<span class="fc" id="L36">		return name;</span>
+<span class="fc" id="L57">		return name;</span>
 	}
 
-
+	/**
+	 * Retourne la valeur de l'attaque du Pokémon.
+	 *
+	 * @return La valeur d'attaque du Pokémon.
+	 */
 	public int getAttack() {
-<span class="fc" id="L41">		return attack;</span>
+<span class="fc" id="L66">		return attack;</span>
 	}
 
-
+	/**
+	 * Retourne la valeur de la défense du Pokémon.
+	 *
+	 * @return La valeur de défense du Pokémon.
+	 */
 	public int getDefense() {
-<span class="fc" id="L46">		return defense;</span>
+<span class="fc" id="L75">		return defense;</span>
 	}
 
-
+	/**
+	 * Retourne la valeur de l'endurance (stamina) du Pokémon.
+	 *
+	 * @return La valeur d'endurance du Pokémon.
+	 */
 	public int getStamina() {
-<span class="fc" id="L51">		return stamina;</span>
+<span class="fc" id="L84">		return stamina;</span>
 	}
 
 }
