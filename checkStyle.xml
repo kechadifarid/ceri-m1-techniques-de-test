@@ -5,7 +5,23 @@
 <module name="Checker">
     <module name="TreeWalker">
 
+        <!-- Vérifie la présence des espaces autour des opérateurs -->
         <module name="WhitespaceAround"/>
+
+        <!-- Vérifie les blocs vides (par exemple les méthodes sans corps) -->
         <module name="EmptyBlock"/>
+
+        <!-- Vérifie que toutes les méthodes ont des Javadoc -->
+        <module name="JavadocMethod">
+            <property name="checkEmptyJavadoc" value="true"/>
+            <property name="allowedAnnotations" value="Override"/>
+        </module>
+
+        <!-- Vérifie que toutes les classes ont des Javadoc -->
+        <module name="JavadocType"/>
+
+        <!-- Vérifie que toutes les variables ont des Javadoc -->
+        <module name="JavadocVariable"/>
+
     </module>
 </module>
