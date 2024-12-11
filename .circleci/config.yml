@@ -23,12 +23,6 @@ jobs:
           name: Upload Coverage to Codecov
           command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
       - run:
-          name: Run Checkstyle
-          command: mvn checkstyle:check  # Continue even if Checkstyle fails
-      - run:
-          name: Generating badge
-          command: mvn badger:badges  # Generate badge even if Checkstyle fails
-      - run:
           name: Generate Badges (Badger)
           command: mvn clean verify  # Make sure badges are updated
 
