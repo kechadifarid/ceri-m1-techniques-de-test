@@ -1,29 +1,48 @@
-version: 2.1
-
+version: 2
 orbs:
   codecov: codecov/codecov@4.0.1
-
 jobs:
-  # Job to build and test the project
-  build-and-test:
+  build:
     docker:
-      - image: cimg/openjdk:21.0
+      - image: circleci/openjdk:8-jdk
     steps:
-      - checkout
+      - checkout  # Récupère le code source dans le répertoire de travail
       - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
-      - run:
-          name: Test
+          name: Run Tests
           command: mvn test
       - run:
-          name: Generate Coverage Report
-          command: mvn jacoco:report
-      - run:
           name: Upload Coverage to Codecov
-          command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
+          command: bash <(curl -s https://codecov.io/bash)
+      - run:
+          name: Generate JavaDoc
+          command: javadoc src/main/java/fr/univavignon/pokedex/api/* -d docs
+
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: docs/
+      - run:
+          name: Install and Configure Dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "kechadifarid10@gmail.com"
+            git config user.name "kechadifarid"
+      - run:
+          name: Deploy Docs to gh-pages Branch
+          command: gh-pages --dist docs/
 
 workflows:
-  upload-to-codecov:
+  version: 2
+  build_and_deploy:
     jobs:
-      - build-and-test
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - docs-deploy:
+          requires:
+            - build
