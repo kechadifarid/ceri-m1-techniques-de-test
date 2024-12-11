@@ -9,7 +9,7 @@ jobs:
     docker:
       - image: cimg/openjdk:21.0
     steps:
-      - checkout
+      - checkout  # Get the source code
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
@@ -28,7 +28,7 @@ jobs:
     docker:
       - image: cimg/openjdk:21.0
     steps:
-      - checkout
+      - checkout  # Get the source code
       - run:
           name: Generate Javadoc
           command: mvn javadoc:javadoc
@@ -38,12 +38,12 @@ jobs:
             # Configure Git
             git config --global user.email "kechadifarid10@gmail.com"
             git config --global user.name "kechadifarid"
-            # Clone the gh-pages branch with the token
+            # Clone the gh-pages branch using the token in the URL
             git clone --branch gh-pages https://$GH_TOKEN@github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
             # Copy the Javadoc
             rm -rf gh-pages/*
             cp -r target/site/apidocs/* gh-pages/
-            # Commit and push changes
+            # Commit and push changes to GitHub Pages
             cd gh-pages
             git add .
             git commit -m "Update Javadoc [ci skip]"
