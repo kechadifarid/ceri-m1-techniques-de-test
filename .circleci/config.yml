@@ -5,54 +5,64 @@ orbs:
 
 jobs:
   # Job to build and test the project
-  build-and-test:
+  build:
     docker:
-      - image: cimg/openjdk:21.0
+      - image: circleci/openjdk:8-jdk
     steps:
-      - checkout  # Get the source code
+      - checkout  # Récupère le code source dans le répertoire de travail
       - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
-      - run:
-          name: Test
+          name: Run Tests
           command: mvn test
       - run:
           name: Generate Coverage Report
           command: mvn jacoco:report
       - run:
           name: Upload Coverage to Codecov
-          command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
-
-  # Job to generate and deploy Javadoc
-  generate-and-deploy-javadoc:
-    docker:
-      - image: cimg/openjdk:21.0
-    steps:
-      - checkout  # Get the source code
+          command: bash <(curl -s https://codecov.io/bash)
       - run:
           name: Generate Javadoc
           command: mvn javadoc:javadoc
+
+  # Job to deploy Javadoc to GitHub Pages
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout  # Clone le repository
       - run:
-          name: Deploy Javadoc to GitHub Pages
+          name: Install gh-pages
+          command: npm install -g --silent gh-pages@2.0.1
+      - run:
+          name: Configure Git
           command: |
-            # Configure Git
-            git config --global user.email "kechadifarid10@gmail.com"
-            git config --global user.name "kechadifarid"
-            # Clone the gh-pages branch using the token in the URL
+            git config user.email "lyes.douki@alumni.univ-avignon.fr"
+            git config user.name "lyesdki"
+      - run:
+          name: Clone gh-pages Branch
+          command: |
             git clone --branch gh-pages https://$GH_TOKEN@github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
-            # Copy the Javadoc
+      - run:
+          name: Copy Javadoc
+          command: |
             rm -rf gh-pages/*
             cp -r target/site/apidocs/* gh-pages/
-            # Commit and push changes to GitHub Pages
+      - run:
+          name: Commit and Push Javadoc to gh-pages
+          command: |
             cd gh-pages
             git add .
             git commit -m "Update Javadoc [ci skip]"
             git push https://$GH_TOKEN@github.com/kechadifarid/ceri-m1-techniques-de-test.git gh-pages
 
 workflows:
-  upload-to-codecov-and-deploy-javadoc:
+  version: 2
+  build_and_deploy:
     jobs:
-      - build-and-test
-      - generate-and-deploy-javadoc:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+      - docs-deploy:
           requires:
-            - build-and-test
+            - build
