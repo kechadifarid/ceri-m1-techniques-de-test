@@ -24,7 +24,7 @@ jobs:
           command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
       - run:
           name: Run Checkstyle
-          command: mvn checkstyle:check || true  # Continue even if Checkstyle fails
+          command: mvn checkstyle:check  # Continue even if Checkstyle fails
       - run:
           name: Generating badge
           command: mvn badger:badges  # Generate badge even if Checkstyle fails
