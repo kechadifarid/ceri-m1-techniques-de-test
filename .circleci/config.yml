@@ -25,6 +25,9 @@ jobs:
       - run:
           name: Run Checkstyle
           command: mvn checkstyle:check
+      - run:
+          name: Generate Badges (Badger)
+          command: mvn clean verify
 
   # Job to generate and deploy Javadoc
   generate-and-deploy-javadoc:

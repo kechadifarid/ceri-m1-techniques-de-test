@@ -6,10 +6,7 @@ import java.util.List;
 
 public class Pokedex implements IPokedex {
 
-    /**
-     * Liste qui contient tous les Pokémon capturés.
-     * Cette liste est initialisée au démarrage et sera remplie à mesure que les Pokémon sont capturés.
-     */
+
     private final List<Pokemon> pokemons = new ArrayList<>();
 
 
