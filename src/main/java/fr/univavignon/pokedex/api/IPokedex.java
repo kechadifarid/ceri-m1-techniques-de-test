@@ -11,6 +11,7 @@ public interface IPokedex extends IPokemonMetadataProvider, IPokemonFactory {
 	
 
 	int addPokemon(Pokemon pokemon);
+
 	
 
 	Pokemon getPokemon(int id) throws PokedexException;
