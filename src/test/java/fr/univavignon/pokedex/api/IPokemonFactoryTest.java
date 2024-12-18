@@ -85,12 +85,8 @@ class IPokemonFactoryTest {
 
     @Test
     void testCreatePokemonInvalidIndexW() {
-        // Test avec un index invalide (par exemple, un index non défini comme 999)
-        PokedexException exception = assertThrows(PokedexException.class, () -> {
-            rocketPokemonFactory.createPokemon(999, 1000, 150, 2000, 10);
-        });
-
-        // Vérification du message d'exception
-        assertEquals("Index invalide: Aucun Pokémon trouvé avec cet index.", exception.getMessage());
+        Pokemon pokemon = rocketPokemonFactory.createPokemon(111,613, 64,
+                4000, 4);
+        assertEquals("MISSINGNO",pokemon.getName());
     }
 }
