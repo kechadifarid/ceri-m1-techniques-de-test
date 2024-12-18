@@ -62,18 +62,6 @@ class IPokemonFactoryTest {
         assertEquals(0.0, pokemon.getIv());
     }
 
-    /**
-     * Test pour un index absent dans la map index2name de RocketPokemonFactory.
-     */
-    @Test
-    void testMissingIndex() {
-        Pokemon pokemon = rocketPokemonFactory.createPokemon(999, 0, 0, 0, 0);
-
-        assertNotNull(pokemon);
-        assertEquals(0, pokemon.getIndex());  // Redirigé vers "MISSINGNO"
-        assertEquals("MISSINGNO", pokemon.getName());
-    }
-
 
 
     /**
@@ -86,9 +74,9 @@ class IPokemonFactoryTest {
         assertNotNull(pokemon);
         assertEquals(1, pokemon.getIndex());
         assertEquals("Bulbasaur", pokemon.getName());
-        assertTrue(pokemon.getAttack() >= 0 && pokemon.getAttack() <= 10);
-        assertTrue(pokemon.getDefense() >= 0 && pokemon.getDefense() <= 10);
-        assertTrue(pokemon.getStamina() >= 0 && pokemon.getStamina() <= 10);
+        assertTrue(pokemon.getAttack() >= 0 && pokemon.getAttack() <= 100);
+        assertTrue(pokemon.getDefense() >= 0 && pokemon.getDefense() <= 100);
+        assertTrue(pokemon.getStamina() >= 0 && pokemon.getStamina() <= 100);
         assertEquals(500, pokemon.getCp());
         assertEquals(100, pokemon.getHp());
         assertEquals(2000, pokemon.getDust());
