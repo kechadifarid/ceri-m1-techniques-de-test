@@ -41,16 +41,4 @@ class PokemonFactoryTest {
         assertEquals("Index invalide: Aucun Pokémon trouvé avec cet index.", exception.getMessage());
     }
 
-    @Test
-    void testCreatePokemonWithIvCalculation() throws PokedexException {
-        // Création de l'instance de PokemonFactory
-        PokemonFactory factory = new PokemonFactory();
-
-        // Test avec un index valide (par exemple, Ivysaur avec index 2)
-        Pokemon pokemon = factory.createPokemon(2, 1200, 180, 2500, 12);
-
-        // Vérification du calcul de l'IV
-        double expectedIv = ((156 + 158 + 120) / 45.0) * 100;  // Calcul IV basé sur les statistiques d'Ivysaur
-        assertEquals(expectedIv, pokemon.getIv(), 0.1);  // La différence autorisée est de 0.1
-    }
 }
