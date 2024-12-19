@@ -44,7 +44,6 @@ class PokemonTrainerFactoryTest {
         }, "Une exception NullPointerException devrait être lancée lorsque le nom de l'entraîneur est null.");
 
 
-
         // Test avec l'équipe null
         assertThrows(NullPointerException.class, () -> {
             trainerFactory.createTrainer("Ash Ketchum", null, new PokedexFactory());
